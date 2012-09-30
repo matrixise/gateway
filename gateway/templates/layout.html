@@ -1,0 +1,33 @@
+{% extends "bootstrap_responsive.html" %}
+{% import "bootstrap_wtf.html" as wtf %}
+
+{% block title %}Gateway{% endblock %}
+
+{% block style_navbar_padding %}
+    <style>
+        body {
+            padding-top: 80px;
+        }
+    </style>
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container"> 
+                    <a class="brand" href="{{ config['PROJECT_URL'] }}">Gateway</a>
+                </div>
+            </div>
+        </div>
+
+
+        {% block content %}{% endblock %}
+
+        <footer class="footer">
+            <p class="pull-left">Gateway</p>
+            <p class="pull-left">&copy; 2012 - <a href="http://wirtel.be">Stéphane Wirtel</a></p>
+        </footer>
+    </div>
+
+{% endblock %}

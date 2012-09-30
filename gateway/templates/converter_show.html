@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="span12">
+        <div class="page-header">
+            <h1>Converter: {{ converter }}</h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <table class="table table-condensed table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Created At</th>
+                    <th>Signature</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                <tr>
+                    <td>{{ message.created_at.isoformat() }}</td>
+                    <td>{{ message.sha256 }}</td>
+                    <td>{{ message.connection }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
