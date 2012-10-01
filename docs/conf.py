@@ -55,9 +55,9 @@ copyright = u'2012, Stephane Wirtel'
 # built documents.
 import pkg_resources
 try:
-    release = pkg_resources.get_distribution('Flask').version
+    release = pkg_resources.get_distribution('gateway').version
 except pkg_resources.DistributionNotFound:
-    print 'To build the documentation, The distribution information of Flask'
+    print 'To build the documentation, The distribution information of Gateway'
     print 'Has to be available.  Either install the package into your'
     print 'development environment or run "setup.py develop" to setup the'
     print 'metadata.  A virtualenv is recommended!'
