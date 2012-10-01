@@ -29,17 +29,3 @@ would conflict with Flask itself.
 
 Now head over to `http://127.0.0.1:5000/ <http://127.0.0.1:5000/>`_, and you
 should see your Gateway app.
-
-Testing
--------
-
-::
-    $ pip install httpie
-
-::
-    $ http GET http://127.0.0.1:5000/converters/send_by_mail
-
-::
-    $ cat http POST http://127.0.0.1:5000/converters/send_by_mail
-
-
