@@ -3,6 +3,7 @@ Flask-Bootstrap==2.1.0-1
 Flask-RQ==0.1
 Flask-Script==0.5.0
 Flask-SQLAlchemy==0.16
+Flask-Babel
 Flask==0.9
 ipython==0.13
 Jinja2==2.6
