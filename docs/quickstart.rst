@@ -13,19 +13,46 @@ A Minimal Application
 
 A minimal Gateway application looks something like this
 
+.. sourcecode:: bash
+    
+    cd examples
+
 .. literalinclude:: ../examples/main.py
     :language: python
 
 
-Just save it as `hello.py` (or something similar) and run it with your Python
-interpreter.  Make sure to not call your application `flask.py` because this
-would conflict with Flask itself.
+Just save it as `main.py` (or something similar) and run it with your Python
+interpreter.  
 
 ::
 
-    $ gateway db_create --app=hello:application
-    $ gateway run --app=hello:application
+    $ gateway db_create --app=main:application
+    $ gateway run --app=main:application
      * Running on http://127.0.0.1:5000/
 
 Now head over to `http://127.0.0.1:5000/ <http://127.0.0.1:5000/>`_, and you
 should see your Gateway app.
+
+For the simulation of the client, there is a script in the examples directory::
+
+    $ python client.py
+
+.. literalinclude:: ../examples/client.py
+    :language: python
+
+Now if you want to execute the worker, you can use the Worker example in
+the examples directory
+
+.. literalinclude:: ../examples/worker.py
+    :language: python
+
+
+To execute it, just run it with the command::
+
+    $ python worker
+
+
+But you can check the status of the Queue or the Worker with the `rqinfo`
+command distributed by python-rq::
+
+    $ rqinfo
