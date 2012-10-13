@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    worker
-    ~~~~~~
+    gateway.examples.worker
+    ~~~~~~~~~~~~~~~~~~~~~~~
 
     This module implements the worker.
 
