@@ -25,7 +25,7 @@ def main():
         }, 
         'data' : {
             'text' : 'this is a test', 
-            'timestamp' : datetime.datetime.now(),
+            'timestamp' : datetime.datetime.now().isoformat(),
         }
     })
 
