@@ -3,6 +3,22 @@ Gateway Changelog
 
 Here you can see the full list of changes between each Flask release.
 
+Version 0.2
+-----------
+Released on October 14th 2012
+
+Features
+~~~~~~~~
+
+* add the __format__ attribute on the Converter, it able to use a native or a json stream.
+  with this way, you can use curl or httpie to post a http for some tests
+
+
+Fixes:
+~~~~~~
+
+* fix the format of the datetime in examples/client.py
+
 Version 0.1
 -----------
 

@@ -12,6 +12,7 @@ instructions for gateway development with Gateway.
     quickstart
     tutorial
     deploying/index
+    api
 
 Additional Notes
 ----------------

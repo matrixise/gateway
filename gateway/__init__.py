@@ -69,6 +69,9 @@ class Gateway(Flask):
         self.register_blueprint(blueprint)
 
     def configure_extensions(self):
+        """
+        configure the extensions for the Gateway app
+        """
         db.init_app(self)
         bootstrap.init_app(self)
         RQDashboard(self)

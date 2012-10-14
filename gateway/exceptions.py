@@ -27,3 +27,8 @@ class AlreadyExistsConverter(Exception):
 
 class NotFoundConverter(Exception):
     pass
+
+class UnknownFormat(Exception):
+    def __init__(self, name, format):
+        super(UnknownFormat, self).__init__("Unknown format (%s) for the (%s) converter" % 
+                                            (format, name))

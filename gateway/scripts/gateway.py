@@ -41,14 +41,10 @@ def import_app(module):
         raise TypeError("Application object must be callable.")
     return app
 
-# print "os.getcwd: %r" % (os.getcwd())
 sys.path.append(os.getcwd())
 
 
 class CustomManager(Manager):
-    # def __init__(self, *args, **kwargs):
-    #     super(CustomManager, self).__init__(*args, **kwargs)
-
     def create_app(self, **kwargs):
         if 'custom_app' in kwargs:
             module = kwargs.pop('custom_app')

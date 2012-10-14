@@ -66,18 +66,37 @@ def log_request(converter_name, sha, information):
     db.session.add(msg)
     db.session.commit()
 
+def compute_all(converter_name, request):
+    converter = ConverterRegistry.get(converter_name)
+
+    sha = compute_sha(request.data)
+
+    if converter.__format__ == 'json':
+        if request.json is not None:
+            information = request.json
+        else:
+            raise Exception("No data for a JSON Converter")
+    elif converter.__format__ == 'native':
+        information = dict(
+            connection=dict(),
+            data=request.data
+        )
+
+    return (sha, information,)
+
 @blueprint.route('/converters/<string:converter_name>', methods=['GET', 'POST'])
 def call_converter(converter_name):
     """
     :param converter_name: The Converter name
     """
+    print "converter_name: %r" % (converter_name,)
+    print "converters: %r" % (ConverterRegistry.converters(),)
     if converter_name not in ConverterRegistry.converters():
         raise UnknownConverter()
 
     if request.method == 'POST':
-        sha = compute_sha(request.data)
+        sha, information = compute_all(converter_name, request)
 
-        information = json.loads(request.data)
         try:
             log_request(converter_name, sha, information)
         except IntegrityError:
@@ -106,5 +125,3 @@ def call_converter(converter_name):
             converter=converter_name,
             messages=messages
         )
-
-

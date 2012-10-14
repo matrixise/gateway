@@ -6,36 +6,6 @@ Gateway
 
     :copyright: (c) 2012 - Stephane Wirtel <stephane@wirtel.be>
     :license: BSD, see LICENSE for more details
-
-::
-    
-    from gateway import Gateway
-    from gateway.converters import BaseConverter
-
-    class SendByMailConverter(BaseConverter):
-        __name__ = 'send_by_mail'
-
-        def run(self, converter, request, data):
-            return True
-
-
-    def application(config=None):
-        gateway = Gateway(__name__, config=config)
-        return gateway
-
-
-    def main():
-        app = application()
-        app.run()
-
-    if __name__ == '__main__':
-        main()
-
-::
-
-    $ pip install Gateway
-    $ python gateway_server.py
-
 """
 import sys
 from setuptools import setup
@@ -44,7 +14,7 @@ from setuptools import find_packages
 if not hasattr(sys, 'version_info') or sys.version_info < (2, 6, 0, 'final'):
     raise SystemExit("Gateway requires Python 2.6 or later.")
 
-with open('README') as f:
+with open('README.rst') as f:
     README = f.read()
 
 with open('CHANGES') as f:
@@ -52,10 +22,10 @@ with open('CHANGES') as f:
 
 setup(
     name                 = 'Gateway',
-    version              = '0.1dev',
+    version              = '0.2dev',
     url                  = 'http://github.com/matrixise/gateway/',
     license              = 'BSD',
-    description          = 'Gateway is a WSGI layer over Redis Queue with workers',
+    description          = 'Gateway is a Converter tools based on Redis Queue and WSGI',
     long_description     = README + '\n' + CHANGES,
     author               = 'Stephane Wirtel',
     author_email         = 'stephane@wirtel.be',

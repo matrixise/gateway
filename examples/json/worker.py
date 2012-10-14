@@ -10,7 +10,6 @@
     :license: BSD, see LICENSE for more details.
 """
 from rq import Queue, Worker, Connection
-
 from main import SendByMailConverter
 
 

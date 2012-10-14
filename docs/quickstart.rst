@@ -15,9 +15,9 @@ A minimal Gateway application looks something like this
 
 .. sourcecode:: bash
     
-    cd examples
+    cd examples/json
 
-.. literalinclude:: ../examples/main.py
+.. literalinclude:: ../examples/json/main.py
     :language: python
 
 
@@ -33,17 +33,23 @@ interpreter.
 Now head over to `http://127.0.0.1:5000/ <http://127.0.0.1:5000/>`_, and you
 should see your Gateway app.
 
+The Client
+~~~~~~~~~~
+
 For the simulation of the client, there is a script in the examples directory::
 
     $ python client.py
 
-.. literalinclude:: ../examples/client.py
+.. literalinclude:: ../examples/json/client.py
     :language: python
+
+The Worker
+~~~~~~~~~~
 
 Now if you want to execute the worker, you can use the Worker example in
 the examples directory
 
-.. literalinclude:: ../examples/worker.py
+.. literalinclude:: ../examples/json/worker.py
     :language: python
 
 
@@ -56,3 +62,13 @@ But you can check the status of the Queue or the Worker with the `rqinfo`
 command distributed by python-rq::
 
     $ rqinfo
+
+
+Native Converter
+----------------
+Now you can use the default format (native) for the converter. 
+Here is an example
+
+.. literalinclude:: ../examples/native/main.py
+    :language: python
+    
