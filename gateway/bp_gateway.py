@@ -89,8 +89,6 @@ def call_converter(converter_name):
     """
     :param converter_name: The Converter name
     """
-    print "converter_name: %r" % (converter_name,)
-    print "converters: %r" % (ConverterRegistry.converters(),)
     if converter_name not in ConverterRegistry.converters():
         raise UnknownConverter()
 
@@ -100,7 +98,7 @@ def call_converter(converter_name):
         try:
             log_request(converter_name, sha, information)
         except IntegrityError:
-            return jsonify(result='job already done'), 500
+            return jsonify(result='job already done'), 200
 
         # store in the Redis Queue
         current_app.queue.enqueue(
