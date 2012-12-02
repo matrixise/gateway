@@ -11,7 +11,6 @@
 """
 
 from flask import Flask
-from rq_dashboard import RQDashboard
 
 from gateway.extensions import db
 from gateway.extensions import bootstrap
@@ -22,6 +21,7 @@ from gateway.config import DefaultConfig
 from rq import Queue, Connection
 
 from gateway.bp_gateway import blueprint
+from gateway.dashboard import dashboard as blueprint_dashboard
 
 
 __all__ = ['Gateway']
@@ -67,6 +67,7 @@ class Gateway(Flask):
         self.configure_extensions()
 
         self.register_blueprint(blueprint)
+        self.register_blueprint(blueprint_dashboard, url_prefix="/rq")
 
     def configure_extensions(self):
         """
@@ -74,5 +75,4 @@ class Gateway(Flask):
         """
         db.init_app(self)
         bootstrap.init_app(self)
-        RQDashboard(self)
         babel.init_app(self)
