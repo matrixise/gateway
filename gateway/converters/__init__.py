@@ -22,11 +22,11 @@ __all__ = [
 
 class ConverterRegistry(object):
     """
-    The ConverterRegistry will be used as a singleton object in which one 
-    we add all the registered converters 
+    The ConverterRegistry will be used as a singleton object in which one
+    we add all the registered converters
     """
 
-    #: The __converters is a dictionary where we store the name of the converter 
+    #: The __converters is a dictionary where we store the name of the converter
     #: with its class.
     __converters = dict()
 
@@ -35,7 +35,7 @@ class ConverterRegistry(object):
         """
         return the name list of the registered converters
         """
-        return cls.__converters.keys()
+        return cls.__converters
 
     @classmethod
     def add(cls, name, klass, options=None):
@@ -49,7 +49,7 @@ class ConverterRegistry(object):
         if name in cls.__converters:
             raise AlreadyExistsConverter()
 
-        if options is None:        
+        if options is None:
             options = dict()
 
         cls.__converters[name] = (klass, options)
@@ -73,6 +73,7 @@ class ConverterRegistry(object):
             raise NotFoundConverter()
         return cls.__converters[name][1]
 
+
 class ConverterMeta(type):
     """
     :param __name__: The name of the Converter
@@ -85,12 +86,13 @@ class ConverterMeta(type):
     :raises: :class:`gateway.exceptions.UnknownFormat` if the format of the converter is unknown.
 
     .. versionadded:: 0.2
-        The param `__format__` has been introduced to use `curl <http://curl.org>`_ 
+        The param `__format__` has been introduced to use `curl <http://curl.org>`_
         or `httpie <http://httpie.org>`_.
 
     """
 
     FORMATS = ['json', 'native']
+
     def __new__(mcs, classname, bases, classdict):
         if classname == 'BaseConverter':
             return type.__new__(mcs, classname, bases, classdict)
@@ -104,13 +106,13 @@ class ConverterMeta(type):
             raise Exception("There is no name for this converter")
 
         if options['format'] not in ConverterMeta.FORMATS:
-            raise UnknownFormat(name, format)
+            raise UnknownFormat(options['name'], options['format'])
 
         thisKlass = type.__new__(mcs, classname, bases, classdict)
 
         #: We add the new class in the registry
         ConverterRegistry.add(options['name'], thisKlass, options)
-    
+
         return thisKlass
 
 
@@ -135,7 +137,7 @@ def run_converter(converter, request, data):
     """
     call the converter and pass the request and the data
 
-    :param converter: the converter name 
+    :param converter: the converter name
     :param request: the request dictionnary (routing)
     :param data: the data to process
     :rtype: a subclass of :class:`~gateway.converters.Converter`
