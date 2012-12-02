@@ -66,9 +66,25 @@ command distributed by python-rq::
 
 Native Converter
 ----------------
+
+.. versionadded:: 0.2
+
 Now you can use the default format (native) for the converter. 
 Here is an example
 
 .. literalinclude:: ../examples/native/main.py
     :language: python
     
+
+.. _synchronous_worker:
+
+Synchronous Worker
+------------------
+
+.. versionadded:: 0.2
+
+In order to have a synchronous worker, you can use the `sync` keyword on the URL of your converter. ::
+
+    pip install httpie
+    cat /etc/issue | http POST http://localhost:5000/converters/send_by_mail?sync
+
