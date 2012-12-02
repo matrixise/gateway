@@ -14,12 +14,14 @@
             <thead>
                 <tr>
                     <th>{{ _('Name') }}</th>
+                    <th>{{ _('Type') }}</th>
                 </tr>
             </thead>
             <tbody>
-                {% for converter in converters %}
+                {% for converter_name, converter in converters.iteritems() %}
                 <tr>
-                    <td><a href="{{ url_for('gateway.call_converter', converter_name=converter) }}">{{ converter }}</a></td>
+                    <td><a href="{{ url_for('gateway.call_converter', converter_name=converter_name) }}">{{ converter[1].name }}</a></td>
+                    <td>{{ converter[1].format }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

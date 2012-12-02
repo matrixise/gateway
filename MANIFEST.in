@@ -1,4 +1,4 @@
-include Makefile CHANGES LICENSE AUTHORS README
+include Makefile CHANGES LICENSE AUTHORS README CREDITS
 include pip-requirements.txt dev-requirements.txt
 recursive-include gateway/templates *
 recursive-include tests *
