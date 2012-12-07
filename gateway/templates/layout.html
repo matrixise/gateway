@@ -18,7 +18,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> 
-                    <a class="brand" href="{{ config['PROJECT_URL'] }}">Gateway</a>
+                    <a class="brand" href="{{ url_for('gateway.index') }}">Gateway</a>
                     <ul class="nav">
                         <li><a href="{{ url_for('rq_dashboard.overview') }}">{{ _('Dashboard') }}</a></li>
                     </ul>

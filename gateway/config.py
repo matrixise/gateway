@@ -21,8 +21,7 @@ class DefaultConfig(object):
 
     BABEL_DEFAULT_LOCALE = 'en_US'
 
-    PROJECT_URL = 'http://localhost:5000'
-
+    BOOTSTRAP_USE_CDN = False
 
 #class ProductionConfig(DefaultConfig):
 #    SQLALCHEMY_DATABASE_URI = 'postgres+psycopg2://localhost:5432/gateway'
